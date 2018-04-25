@@ -36,103 +36,151 @@
 					<button class="btn my-2 my-sm-0" type="submit">Caută</button>
 				</form>
 			</div>
-			<a class="btn fa fa-2x fa-shopping-cart shop only-big"></a>
+			<a id="cart" class="btn fa fa-2x fa-shopping-cart shop only-big"></a>
 		</nav>
 		<main>
-			<div class="container-fluid items-container">
+			<div class="container items-container">
 				<div class="row">
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a id="card-title-1" href="#">Item One</a>
+								</h4>
+								<h5>$24.99</h5>
+								<p id="card-text-1" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+							</div>
+							<div class="card-footer">
+								<button number="1" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
+								<button class="btn">Cumpără</button>
+							</div>
 						</div>
 					</div>
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a id="card-title-2" href="#">Item Two</a>
+								</h4>
+								<h5>$24.99</h5>
+								<p id="card-text-2" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+							</div>
+							<div class="card-footer">
+								<button number="2" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
+								<button class="btn">Cumpără</button>
+							</div>
 						</div>
 					</div>
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a id="card-title-3" href="#">Item Three</a>
+								</h4>
+								<h5>$24.99</h5>
+								<p id="card-text-3" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+							</div>
+							<div class="card-footer">
+								<button number="3" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
+								<button class="btn">Cumpără</button>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a id="card-title-4" href="#">Item Four</a>
+								</h4>
+								<h5>$24.99</h5>
+								<p id="card-text-4" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+							</div>
+							<div class="card-footer">
+								<button number="4" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
+								<button class="btn">Cumpără</button>
+							</div>
 						</div>
 					</div>
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a id="card-title-5" href="#">Item Five</a>
+								</h4>
+								<h5>$24.99</h5>
+								<p id="card-text-5" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+							</div>
+							<div class="card-footer">
+								<button number="5" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
+								<button class="btn">Cumpără</button>
+							</div>
 						</div>
 					</div>
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
-						</div>
-					</div>
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
-						</div>
-					</div>
-					<div class="item card col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
-						<img class="card-img-top" src="assets/img/favicon.ico">
-						<div class="card-body">
-							<p class="card-title">Card title</p>
-							<p class="card-text">Some  up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-primary">Detalii</a>
-							<a href="#" class="btn btn-primary">Adaugă în coș</a>
+					<div class="col-lg-4 col-md-6 mb-4">
+						<div class="card">
+							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<div class="card-body">
+								<h4 class="card-title">
+									<a id="card-title-6" href="#">Item Six</a>
+								</h4>
+								<h5>$24.99</h5>
+								<p id="card-text-6" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+							</div>
+							<div class="card-footer">
+								<button number="6" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
+								<button class="btn">Cumpără</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</main>
-		<footer>
+		<footer class="py-3">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-12">
+						<a href="https://playsolutions.ro" target="_blank">
+							<img src="assets/img/logo.png" class="img-fluid logo-footer">
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4"></div>
+					<div class="col-12 col-sm-12 col-md-4">
+						<a class="fa fa-2x fa-facebook mr-5 contact" href="https://web.facebook.com/PlaySolutions/?_rdc=1&_rdr" target="_blank"></a>
+						<a class="fa fa-2x fa-linkedin ml-3 mr-3 contact" href="https://www.linkedin.com/company/2902224/" target="_blank"></a>
+						<a class="fa fa-2x fa-twitter ml-5 contact" href="https://twitter.com/PlaySolutionsRO" target="_blank"></a>
+					</div>
+				</div>
+			</div>
 		</footer>
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+		<!--Modal Start -->
+		<div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalTitle"></h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">X</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p id="modalBody"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn" data-dismiss="modal">Close</button>
+						<button type="button" class="btn">Buy</button>
+					</div>
+				</div>
+			</div>
+		</div>
 		<script src="assets/js/design.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	</body>

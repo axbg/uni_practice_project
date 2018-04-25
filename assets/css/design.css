@@ -16,8 +16,18 @@ header:hover{
 
 main{
     background-color:ghostwhite;
+
 }
 
+footer{
+    background-color: darkgrey;
+    text-align: center;
+    transition: .5s ease;
+}
+
+footer:hover{
+    background-color:grey;
+}
 
 
 
@@ -38,47 +48,54 @@ main{
     padding-top: 60px;
 }
 
-.img-fluid, .row{
-    max-height:100%;
-}
-
 .form-control{
     width: 75%
 }
 
 .arrow{
-    margin-left:9%;
+    margin-left:7%;
     margin-bottom:10px;
     cursor: pointer;
 }
 
 .shop{
-    margin-right:9%;
+    margin-right:7%;
     background-color:#dddddd;
     height:38px;
 }
 
 .row{
     text-align:center;
-
 }
 
 .items-container{
     width:70%;
-}
-
-.item{
-    background-color: whitesmoke;
-    height:300px;
-    padding:20px;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    width:150px;
+    padding-top:15px;
 }
 
 .big{
     width:100% !important;
 }
+
+.img-fluid{
+    height:100%;
+}
+
+.logo-footer{
+    max-height:90px;
+}
+
+.contact{
+    text-decoration: none;
+    color: white;
+    transition: .5s ease;
+}
+
+.contact:hover{
+    text-decoration: none;
+    color: black;
+}
+
 
 
 /* media queries */
