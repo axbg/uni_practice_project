@@ -2,18 +2,25 @@
 	<head>
 		<title>PlaySolutions - Shop Design</title>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="assets/img/favicon.ico">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/design.css">
+
+		<!--OG Tags -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content="Magazin online - Practica PlaySolutions" />
+		<meta property="og:description" content="Magazin online de produse hardware" />
+		<meta property="og:site_name" content="Online Shop" />
+		<meta property="og:image" content="assets/img/logoshop.png" />
 	</head>
 	<body>
 		<header class="container-fluid">
 			<div class="row">
 				<div class="col">
 					<a href="https://playsolutions.ro" target="_blank">
-						<img src="assets/img/logo.png" class="img-fluid">
+						<img src="assets/img/logoshop.png" class="img-fluid" />
 					</a>
 				</div>
 			</div>
@@ -22,21 +29,21 @@
 			<div class="navbar-toggler dropdown only-small">
 				<a class="fa fa-sort-down arrow"></a>
 				<div class="dropdown-content">
-					<a href="#">Home</a>
-					<a href="#">Categorie</a>
+					<a href="#">Sign-In</a>
+					<a href="#">Categorii</a>
 					<a href="#">Contact</a>
 				</div>
 			</div>
 			<a class="fa fa-2x fa-sort-down arrow only-big"></a>
 			<div class="navbar-brand home dropdown only-big">Meniu
 				<div class="dropdown-content">
-					<a href="#">Home</a>
-					<a href="#">Categorie</a>
+					<a href="#">Sign-In</a>
+					<a href="#">Categorii</a>
 					<a href="#">Contact</a>
 				</div>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler" aria-expanded="false" aria-label="Navigation">
-				<span class="fa fa-search"></span>
+				<span class="fa fa-search"></span>	
 			</button>
 			<button class="navbar-toggler" type="button">
 				<a class="fa fa-shopping-cart"></a>
@@ -54,13 +61,13 @@
 				<div class="row">
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card">
-							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a id="card-title-1" href="#">Item One</a>
+									<a id="card-title-1" href="#">Produs#1</a>
 								</h4>
-								<h5>$24.99</h5>
-								<p id="card-text-1" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+								<h5>24.99 RON</h5>
+								<p id="card-text-1" class="card-text">Produs 1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 							</div>
 							<div class="card-footer">
 								<button number="1" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
@@ -70,13 +77,13 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card">
-							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a id="card-title-2" href="#">Item Two</a>
+									<a id="card-title-2" href="#">Produs#2</a>
 								</h4>
-								<h5>$24.99</h5>
-								<p id="card-text-2" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+								<h5>24.99 RON</h5>
+								<p id="card-text-2" class="card-text">Produs 2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 							</div>
 							<div class="card-footer">
 								<button number="2" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
@@ -86,13 +93,13 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card">
-							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a id="card-title-3" href="#">Item Three</a>
+									<a id="card-title-3" href="#">Produs#3</a>
 								</h4>
-								<h5>$24.99</h5>
-								<p id="card-text-3" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+								<h5>24.99 RON</h5>
+								<p id="card-text-3" class="card-text">Produs 3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 							</div>
 							<div class="card-footer">
 								<button number="3" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
@@ -102,13 +109,13 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card">
-							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a id="card-title-4" href="#">Item Four</a>
+									<a id="card-title-4" href="#">Produs#4</a>
 								</h4>
-								<h5>$24.99</h5>
-								<p id="card-text-4" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+								<h5>24.99 RON</h5>
+								<p id="card-text-4" class="card-text">Produs 4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 							</div>
 							<div class="card-footer">
 								<button number="4" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
@@ -118,13 +125,13 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card">
-							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a id="card-title-5" href="#">Item Five</a>
+									<a id="card-title-5" href="#">Produs#5</a>
 								</h4>
-								<h5>$24.99</h5>
-								<p id="card-text-5" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+								<h5>24.99 RON</h5>
+								<p id="card-text-5" class="card-text">Produs 5 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 							</div>
 							<div class="card-footer">
 								<button number="5" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
@@ -134,13 +141,13 @@
 					</div>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card">
-							<a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
 							<div class="card-body">
 								<h4 class="card-title">
-									<a id="card-title-6" href="#">Item Six</a>
+									<a id="card-title-6" href="#">Produs#6</a>
 								</h4>
-								<h5>$24.99</h5>
-								<p id="card-text-6" class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
+								<h5>24.99 RON</h5>
+								<p id="card-text-6" class="card-text">Produs 6 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
 							</div>
 							<div class="card-footer">
 								<button number="6" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
@@ -156,7 +163,7 @@
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-12">
 						<a href="https://playsolutions.ro" target="_blank">
-							<img src="assets/img/logo.png" class="img-fluid logo-footer">
+							<img src="assets/img/logo.png" class="img-fluid logo-footer" />
 						</a>
 					</div>
 				</div>
@@ -185,14 +192,13 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn" data-dismiss="modal">Close</button>
-						<button type="button" class="btn">Buy</button>
+						<button type="button" class="btn">Cumpără</button>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script src="assets/js/design.js"></script>
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="assets/js/jquery-3.3.1.min.js"></script>
+		<script src="assets/js/bootstrap.min.js"></script>
 	</body>
 </html>
