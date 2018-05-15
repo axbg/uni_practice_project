@@ -63,9 +63,18 @@
     }
 
     .shop{
-        margin-right:7%;
+        margin-right:2%;
         background-color:#dddddd;
         height:38px;
+    }
+
+    .menu-buttons{
+        padding: .25rem .75rem;
+        font-size: 1.25rem;
+        line-height: 1;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-radius: .25rem;
     }
 
     .row{
@@ -118,6 +127,11 @@
         cursor: pointer;
     }
 
+    .right{
+        left:auto;
+        right:0;
+    }
+
     .dropdown-content {
         display: none;
         position: absolute;
@@ -144,7 +158,18 @@
     }
     /* Dropdown controls end */
 
+    .btn-secondary{
+        background-color: lightgrey;
+        color:black;
+    }
 
+    .dropdown-menu{
+        min-width:10px;
+    }
+
+    .modal-body{
+        text-align:center;
+    }
 
     /* media queries */
     @media screen and (max-width: 575px) {

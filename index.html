@@ -29,17 +29,17 @@
 			<div class="navbar-toggler dropdown only-small">
 				<a class="fa fa-sort-down arrow"></a>
 				<div class="dropdown-content">
-					<a href="#">Sign-In</a>
 					<a href="#">Categorii</a>
 					<a href="#">Contact</a>
 				</div>
 			</div>
-			<a class="fa fa-2x fa-sort-down arrow only-big"></a>
-			<div class="navbar-brand home dropdown only-big">Meniu
-				<div class="dropdown-content">
-					<a href="#">Sign-In</a>
-					<a href="#">Categorii</a>
-					<a href="#">Contact</a>
+			<div class="dropdown only-big">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Meniu
+				</button>
+				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item" href="#">Categories</a>
+					<a class="dropdown-item" href="#">Contact</a>
 				</div>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler" aria-expanded="false" aria-label="Navigation">
@@ -48,13 +48,25 @@
 			<button class="navbar-toggler" type="button">
 				<a class="fa fa-shopping-cart"></a>
 			</button>
+			<div class="navbar-toggler dropdown only-small">
+				<a class="fa fa-user-times arrow"></a>
+				<div class="dropdown-content right">
+					<a href="#" class="user-msg" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Not Logged in</a>
+				</div>
+			</div>
 			<div class="collapse navbar-collapse" id="toggler">
 				<form class="form-inline mt-0 mt-lg-0 my-2 my-lg-0 ml-auto mr-auto">
 					<input class="form-control mr-sm-2" type="search" placeholder="Categorie...">
-					<button class="btn my-2 my-sm-0" type="submit">Caută</button>
+					<button class="btn my-sm-0 btn-secondary" type="submit">Caută</button>
 				</form>
 			</div>
-			<a id="cart" class="btn fa fa-2x fa-shopping-cart shop only-big"></a>
+			<a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons"></a>
+			<div class="dropdown">
+				<div class="btn fa fa-2x fa-user-times only-big menu-buttons"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
+				<div class="dropdown-menu right" style="right:0;">
+					<a id="user-message" class="dropdown-item user-msg" href="#" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Not logged in</a>
+				</div>
+			</div>
 		</nav>
 		<main>
 			<div class="container items-container">
@@ -188,11 +200,11 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<p id="modalBody"></p>
+						<div id="modalBody"></div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn" data-dismiss="modal">Close</button>
-						<button type="button" class="btn">Cumpără</button>
+						<button id="modalClose" type="button" class="btn" data-dismiss="modal">Close</button>
+						<button id="modalAction" type="button" class="btn">Cumpără</button>
 					</div>
 				</div>
 			</div>
@@ -200,5 +212,8 @@
 		<script src="assets/js/design.js"></script>
 		<script src="assets/js/jquery-3.3.1.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.2/qs.js"></script>
+		<script src="assets/js/login.js"></script>
 	</body>
 </html>
