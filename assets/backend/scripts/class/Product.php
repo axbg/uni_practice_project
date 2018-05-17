@@ -84,6 +84,27 @@ class Product implements JsonSerializable
         return $this->brandId;
     }
 
+    public static function getProduct(PDO $db, $productId){
+
+        $getProduct = $db->prepare("SELECT * FROM products WHERE productId=:productId");
+        $getProduct->bindParam(":productId",$productId);
+        $getProduct->execute();
+
+        $product = $getProduct->fetch(PDO::FETCH_ASSOC);
+
+        if($product['productId']){
+
+            $retrievedProduct = new Product($product['productId'], $product['name'],$product['description'],$product['stock'],$product['price'],
+                $product['image'], $product['categoryId'], $product['brandId']);
+
+            return $retrievedProduct;
+
+        } else {
+            return null;
+        }
+
+    }
+
     public static function getAllProducts(PDO $db){
 
         $getProducts = $db->prepare("SELECT * FROM products");

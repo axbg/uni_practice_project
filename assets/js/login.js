@@ -21,7 +21,12 @@ window.onload = () => {
         }
     }
 
-    getProducts();
+    if(window.location.href.includes("index.html")) {
+        getProducts();
+    }
+    else{
+        getIndividualProduct();
+    }
 
 };
 

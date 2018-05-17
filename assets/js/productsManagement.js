@@ -21,7 +21,7 @@ let getProducts = () => {
                     '<span id="stoc-'+ result.data[i]['productId'] +'" class="card-text">' + result.data[i]['stock'] + '</span>' +
                     '</div> ' +
                     '<div class="card-footer"> ' +
-                    '<button number="3" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button> ' +
+                    '<a href="./product.html?productId='+ result.data[i]['productId'] + '"><button number="3" class="btn">Detalii</button></a> ' +
                     '<button class="btn" productId="'+ result.data[i]['productId'] + '" onclick="addToCart(this);">Cumpără</button> ' +
                     '</div> ' +
                     '</div> ' +
@@ -83,3 +83,25 @@ let deleteFromCart = (element) => {
 
 };
 
+let getIndividualProduct = () => {
+
+    let urlCrawl = new URL(window.location.href);
+
+    let productId = urlCrawl.searchParams.get("productId");
+
+    let productContainer = document.getElementById("individual-container");
+
+    axios.get(url + "/api/getProduct.php?productId="+productId)
+        .then((result)=> {
+            productContainer.innerHTML = "<div id='product-info' class='col-sm-5 card' style='padding-top:5%;display:inline-block;'>" +
+                "<p>Denumire: " + result.data['name'] + "</p>"+
+                "<p>Descriere: " + result.data['description'] + "</p><p>Pret: "+ result.data['price']+"</p>"+
+                "<p>Stoc: "+ result.data['stock'] +"</p>" +
+                "<button productId='"+ result.data['productId'] +"' onclick='addToCart(this)'>Cumpără</button></div>" +
+                "<img class='col-sm-7 card' width=250 height=250 src='"+ result.data['image'] +"'>";
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+
+};
