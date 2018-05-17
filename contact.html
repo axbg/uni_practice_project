@@ -19,7 +19,7 @@
 		<header class="container-fluid">
 			<div class="row">
 				<div class="col">
-					<a href="#" target="_self">
+					<a href="index.html" target="_self">
 						<img src="assets/img/logoshop.png" class="img-fluid" />
 					</a>
 				</div>
@@ -31,7 +31,7 @@
 				<div class="dropdown-content">
 					<a href="./categories.html">Categorii</a>
 					<a href="./brands.html">Brands</a>
-					<a href="./contact.html">Contact</a>
+					<a href="#">Contact</a>
 				</div>
 			</div>
 			<div class="dropdown only-big">
@@ -41,7 +41,7 @@
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 					<a class="dropdown-item" href="./categories.html">Categories</a>
 					<a class="dropdown-item" href="./brands.html">Brands</a>
-					<a class="dropdown-item" href="./contact.html">Contact</a>
+					<a class="dropdown-item" href="#">Contact</a>
 				</div>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler" aria-expanded="false" aria-label="Navigation">
@@ -72,12 +72,21 @@
 		</nav>
 		<main>
 			<div class="container items-container">
-				<div class="row">
-					<div class="col-12">
-						<h1>Aici carusel</h1>
-					</div>
+				<div class="row" style="padding-bottom:20px;">
+					<h1 class="col-12">Contact</h1>
 				</div>
-				<div id="content-row" class="row"></div>
+				<div class="row">
+					<h3 class="col-sm-12 col-md-6">Email</h3>
+					<input class="col-sm-12 col-md-6" type="text" id="contact-email">
+				</div>
+				<div class="row">
+					<h3 class="col-sm-12 col-md-6">Message</h3>
+					<textarea class="col-sm-12 col-md-6" style="min-height:200px;resize:none;" id="contact-message"></textarea>
+				</div>
+				<div class="row" style="padding-bottom:50px;">
+					<h3 class="col-sm-12 col-md-6"></h3>
+					<button class="col-sm-12 col-md-6" id="contact-send">Send</button>
+				</div>
 			</div>
 		</main>
 		<footer class="py-1">

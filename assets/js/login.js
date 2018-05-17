@@ -2,30 +2,45 @@ const url="http://desktop/PlaySolutions%20Shop/assets/backend/scripts";
 
 window.onload = () => {
 
-    if(localStorage.getItem("logged")){
+    axios.get(url+"/api/checkCredentials.php")
+        .then((result) => {
 
-        let msg = document.getElementsByClassName("user-msg");
+            if(result.status === 200 && localStorage.getItem("logged")){
+                let msg = document.getElementsByClassName("user-msg");
 
-        for(let i = 0; i < msg.length; i++){
-            msg[i].innerHTML = "<p>Welcome " + localStorage.getItem("email") + "</p>";
-            msg[i].innerHTML += "<div style='text-align:center'><p><button onclick='profileInterface()'>Profile</button></p>" +
-                "<p><input type='submit' onclick='logoutForm()' value='Logout'></p></div>";
-            msg[i].onclick = openLogoutModal;
-        }
+                for(let i = 0; i < msg.length; i++){
+                    msg[i].innerHTML = "<p>Welcome " + localStorage.getItem("email") + "</p>";
+                    msg[i].innerHTML += "<div style='text-align:center'><p><button onclick='profileInterface()'>Profile</button></p>" +
+                        "<p><input type='submit' onclick='logoutForm()' value='Logout'></p></div>";
+                    msg[i].onclick = openLogoutModal;
+                }
 
-        let icons = document.getElementsByClassName("fa-user-times");
+                let icons = document.getElementsByClassName("fa-user-times");
 
-        while(icons.length) {
-            icons[0].classList.add("fa-user");
-            icons[0].classList.remove("fa-user-times");
-        }
-    }
+                while(icons.length) {
+                    icons[0].classList.add("fa-user");
+                    icons[0].classList.remove("fa-user-times");
+                }
+            }
 
-    if(window.location.href.includes("index.html")) {
-        getProducts();
+        }).catch((err) => {
+
+    });
+
+    if(window.location.href.includes("product.html")) {
+        getIndividualProduct();
+    } else if(window.location.href.includes("categories.html")){
+        getCategories();
+    } else if(window.location.href.includes("brands.html")){
+        getBrands();
+    } else if (window.location.href.includes("category.html")){
+        getCategory();
+    }  else if (window.location.href.includes("brand.html")){
+        getBrand();
+    }  else if (window.location.href.includes("contact.html")){
     }
     else{
-        getIndividualProduct();
+        getProducts();
     }
 
 };

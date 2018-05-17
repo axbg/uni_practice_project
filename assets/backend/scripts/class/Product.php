@@ -107,7 +107,7 @@ class Product implements JsonSerializable
 
     public static function getAllProducts(PDO $db){
 
-        $getProducts = $db->prepare("SELECT * FROM products");
+        $getProducts = $db->prepare("SELECT * FROM products ORDER BY productId DESC LIMIT 6");
         $getProducts->execute();
 
         $result = $getProducts->fetchAll(PDO::FETCH_ASSOC);
@@ -117,6 +117,45 @@ class Product implements JsonSerializable
         foreach($result as $product){
             $newProduct = new Product($product['productId'], $product['name'],$product['description'],$product['stock'],$product['price'],
                                     $product['image'], $product['categoryId'], $product['brandId']);
+
+            array_push($productsArray,$newProduct);
+        }
+
+        return $productsArray;
+    }
+
+    public static function getCategory(PDO $db, $categoryId){
+
+        $getCategory = $db->prepare("SELECT * FROM products WHERE categoryId=:categoryId");
+        $getCategory->bindParam(":categoryId",$categoryId);
+        $getCategory->execute();
+
+        $results = $getCategory->fetchAll(PDO::FETCH_ASSOC);
+        $productsArray = array();
+
+        foreach($results as $product){
+            $newProduct = new Product($product['productId'], $product['name'],$product['description'],$product['stock'],$product['price'],
+                $product['image'], $product['categoryId'], $product['brandId']);
+
+            array_push($productsArray,$newProduct);
+        }
+
+        return $productsArray;
+    }
+
+    public static function getBrand(PDO $db, $brandId){
+
+        $getBrand = $db->prepare("SELECT * from products WHERE brandId=:brandId");
+        $getBrand->bindParam(":brandId",$brandId);
+        $getBrand->execute();
+
+        $results = $getBrand->fetchAll(PDO::FETCH_ASSOC);
+
+        $productsArray = array();
+
+        foreach($results as $product){
+            $newProduct = new Product($product['productId'], $product['name'],$product['description'],$product['stock'],$product['price'],
+                $product['image'], $product['categoryId'], $product['brandId']);
 
             array_push($productsArray,$newProduct);
         }

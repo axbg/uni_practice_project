@@ -120,10 +120,18 @@ class User
     }
 
 
-    public function edit(PDO $db){
+    public function edit(PDO $db, $firstName, $lastName, $email, $phone, $address){
 
+        $editUser = $db->prepare("UPDATE users SET firstName=:firstName, lastName=:lastName,
+                    email=:email, phone=:phone, address=:address WHERE userId=:userId");
+        $editUser->bindParam(":firstName",$firstName);
+        $editUser->bindParam(":lastName",$lastName);
+        $editUser->bindParam(":email",$email);
+        $editUser->bindParam(":phone",$phone);
+        $editUser->bindParam(":address",$address);
+        $editUser->bindParam(":userId", $this->userId);
 
-
+        $editUser->execute();
     }
 
     public function saveNew(PDO $db){

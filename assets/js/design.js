@@ -70,15 +70,21 @@ let profileInterface = () => {
 
     let modalTitle = document.getElementById("modalTitle");
     let modalBody = document.getElementById("modalBody");
+    let modalAction = document.getElementById("modalAction");
+
+    modalAction.innerText = "Edit";
+    modalAction.onclick = profileEditForm;
+
 
     axios.get(url + "/profile.php")
         .then((response) => {
             modalTitle.innerText = "Profile";
-            modalBody.innerHTML = '<p>First Name: ' + response.data.firstName + '</p>';
-            modalBody.innerHTML += '<p>Last Name: ' + response.data.lastName + '</p>';
-            modalBody.innerHTML += '<p>Email: ' + response.data.email + '</p>';
-            modalBody.innerHTML += '<p>Phone: ' + response.data.phone + '</p>';
-            modalBody.innerHTML += '<p>Address: ' +response.data.address + '</p>';
+            modalBody.innerHTML = '<div id="profile-container">' +
+                '<p>First Name: ' + response.data.firstName + '</p>' +
+                '<p>Last Name: ' + response.data.lastName + '</p>' +
+                '<p>Email: ' + response.data.email + '</p>' +
+                '<p>Phone: ' + response.data.phone + '</p>' +
+                '<p>Address: ' +response.data.address + '</p></div>';
 
         }).catch((err) => {
         //toastr here
@@ -86,12 +92,52 @@ let profileInterface = () => {
     })
 };
 
+let profileEditForm = () => {
+
+    let profileContainer = document.getElementById("profile-container");
+
+    axios.get(url + "/profile.php")
+        .then((response) => {
+            profileContainer.innerHTML = '<input id="firstName" type="text" value="'+ response.data.firstName +'">';
+            profileContainer.innerHTML += '<input id="lastName" type="text" value="'+ response.data.lastName +'">';
+            profileContainer.innerHTML += '<input id="email" type="text" value="'+ response.data.email +'">';
+            profileContainer.innerHTML += '<input id="phone" type="text" value="'+ response.data.phone +'">';
+            profileContainer.innerHTML += '<input id="address" type="text" value="'+ response.data.address +'">';
+
+            document.getElementById("modalAction").innerText = "Save";
+            document.getElementById("modalAction").onclick = editProfile;
+        }).catch((err) => {
+        //toastr here
+        console.log(err.message);
+    })
+};
+
+let editProfile = () => {
+
+    let params = new URLSearchParams();
+
+    params.append('firstName',document.getElementById("firstName").value);
+    params.append('lastName',document.getElementById("lastName").value);
+    params.append('email',document.getElementById("email").value);
+    params.append('phone',document.getElementById("phone").value);
+    params.append('address',document.getElementById("address").value);
+
+
+    axios.post(url + "/api/editProfile.php", params)
+        .then((result) => {
+            //insert toastr here
+            profileInterface();
+        })
+        .catch((err) =>{
+            //insert toastr here
+        });
+};
+
 let openCartModal = () => {
 
     let modalTitle = document.getElementById("modalTitle");
     let modalBody = document.getElementById("modalBody");
     let modalAction = document.getElementById("modalAction");
-
 
     modalTitle.innerText = "Your Cart";
     modalBody.innerHTML = "";
@@ -124,8 +170,6 @@ let openLogoutModal = () => {
 
     let modalTitle = document.getElementById("modalTitle");
     let modalBody = document.getElementById("modalBody");
-
-    document.getElementById("modalAction").style.display = "none";
 
     modalTitle.innerText = "Logout";
     modalBody.innerHTML = "profile";

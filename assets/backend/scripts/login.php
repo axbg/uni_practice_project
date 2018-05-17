@@ -6,7 +6,7 @@ require_once("class/User.php");
 
 session_start();
 
-echo var_dump($_SESSION);
+
 if(!isset($_SESSION['email'])){
 
     if(isset($_POST['password']) && isset($_POST['email'])){
