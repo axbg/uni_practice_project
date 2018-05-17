@@ -1,68 +1,55 @@
 <?php
+//transform into oop
 
-    require_once("dbconfig.php");
+require_once("PDOconnection.php");
+require_once("class/User.php");
 
-    if(!isset($_SESSION['email'])){
+session_start();
 
-        if(isset($_POST['password']) && isset($_POST['email'])){
-            $password = md5($_POST['password']);
-            $email = $_POST['email'];
+echo var_dump($_SESSION);
+if(!isset($_SESSION['email'])){
 
-            try {
-                $con = new pdo('mysql:host=' . HOST . ';dbname=' . DATABASE .
-                    ';charset=utf8;', USER, PASSWORD);
-            }
-            catch(Exception $ex){
-                header("HTTP/1.1 500 Server Error");
-                echo 'Server Error. Please try again';
+    if(isset($_POST['password']) && isset($_POST['email'])){
+        $password = md5($_POST['password']);
+        $email = $_POST['email'];
+
+        $currentUser = new User();
+
+        $currentUser->populate($con,$email,$currentUser->getCredentials($con,$email,$password));
+
+        if($currentUser->getUserId()){
+
+                $_SESSION['name'] = $currentUser->getFirstName() . ' ' . $currentUser->getLastName();
+                $_SESSION['email'] = $currentUser->getEmail();
+                $_SESSION['id'] = $currentUser->getUserId();
+                $_SESSION['token'] = $currentUser->getToken();
+                $_SESSION['isAdmin'] = $currentUser->getisAdmin();
+
+                header("HTTP/1.1 200 OK");
+                $error['message'] = $currentUser->getToken();
+                echo JSON_ENCODE($error);
                 return;
-            }
 
-            $search_user = $con->prepare("SELECT * FROM users WHERE password=:password AND email=:email");
-            $search_user->bindParam(":password",$password);
-            $search_user->bindParam(":email",$email);
-            if($search_user->execute()){
-
-                if($search_user->RowCount()){
-
-                    $result = $search_user->fetch(PDO::FETCH_ASSOC);
-
-                    session_start();
-                    $_SESSION['name'] = $result['firstName'] . ' ' . $result['lastName'];
-                    $_SESSION['email'] = $result['email'];
-                    $_SESSION['isAdmin'] = $result['isAdmin'];
-
-                    header("HTTP/1.1 200 OK");
-                    $error['message'] = 'You were logged in';
-                    echo JSON_ENCODE($error);
-                    return;
-
-                } else {
-                    header("HTTP/1.1 404 Not Found");
-                    $error['message'] = 'Password and email don\'t match';
-                    echo JSON_ENCODE($error);
-                    return;
-                }
-
-            } else{
-                header("HTTP/1.1 500 Server Error");
-                $error['message'] = "Database error";
+            } else {
+                header("HTTP/1.1 404 Not Found");
+                $error['message'] = $currentUser->getUserId();
                 echo JSON_ENCODE($error);
                 return;
             }
 
-        } else{
-            header("HTTP/1.1 400 Bad Request");
-            $error['message'] = 'Bad Request. Email or password missing';
-            echo JSON_ENCODE($error);
-            return;
-        }
 
-    } else {
-        header("HTTP/1.1 202 Accepted");
-        $error['message'] = 'Already logged in';
+    } else{
+        header("HTTP/1.1 400 Bad Request");
+        $error['message'] = 'Bad Request. Email or password missing';
         echo JSON_ENCODE($error);
         return;
     }
+
+} else {
+    header("HTTP/1.1 202 Accepted");
+    $error['message'] = 'Already logged in';
+    echo JSON_ENCODE($error);
+    return;
+}
 
 ?>

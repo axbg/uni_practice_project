@@ -46,12 +46,12 @@
 				<span class="fa fa-search"></span>	
 			</button>
 			<button class="navbar-toggler" type="button">
-				<a class="fa fa-shopping-cart"></a>
+				<a class="fa fa-shopping-cart" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
 			</button>
 			<div class="navbar-toggler dropdown only-small">
 				<a class="fa fa-user-times arrow"></a>
 				<div class="dropdown-content right">
-					<a href="#" class="user-msg" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Not Logged in</a>
+					<a href="#" class="user-msg" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Log In</a>
 				</div>
 			</div>
 			<div class="collapse navbar-collapse" id="toggler">
@@ -60,114 +60,17 @@
 					<button class="btn my-sm-0 btn-secondary" type="submit">Caută</button>
 				</form>
 			</div>
-			<a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons"></a>
+			<a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
 			<div class="dropdown">
 				<div class="btn fa fa-2x fa-user-times only-big menu-buttons"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
 				<div class="dropdown-menu right" style="right:0;">
-					<a id="user-message" class="dropdown-item user-msg" href="#" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Not logged in</a>
+					<a id="user-message" class="dropdown-item user-msg" href="#" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Log In</a>
 				</div>
 			</div>
 		</nav>
 		<main>
 			<div class="container items-container">
-				<div class="row">
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card">
-							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a id="card-title-1" href="#">Produs#1</a>
-								</h4>
-								<h5>24.99 RON</h5>
-								<p id="card-text-1" class="card-text">Produs 1 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-							<div class="card-footer">
-								<button number="1" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
-								<button class="btn">Cumpără</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card">
-							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a id="card-title-2" href="#">Produs#2</a>
-								</h4>
-								<h5>24.99 RON</h5>
-								<p id="card-text-2" class="card-text">Produs 2 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-							<div class="card-footer">
-								<button number="2" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
-								<button class="btn">Cumpără</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card">
-							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a id="card-title-3" href="#">Produs#3</a>
-								</h4>
-								<h5>24.99 RON</h5>
-								<p id="card-text-3" class="card-text">Produs 3 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-							<div class="card-footer">
-								<button number="3" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
-								<button class="btn">Cumpără</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card">
-							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a id="card-title-4" href="#">Produs#4</a>
-								</h4>
-								<h5>24.99 RON</h5>
-								<p id="card-text-4" class="card-text">Produs 4 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-							<div class="card-footer">
-								<button number="4" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
-								<button class="btn">Cumpără</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card">
-							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a id="card-title-5" href="#">Produs#5</a>
-								</h4>
-								<h5>24.99 RON</h5>
-								<p id="card-text-5" class="card-text">Produs 5 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-							<div class="card-footer">
-								<button number="5" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
-								<button class="btn">Cumpără</button>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card">
-							<a href="#"><img class="card-img-top" src="assets/img/products/server.jpg" alt=""></a>
-							<div class="card-body">
-								<h4 class="card-title">
-									<a id="card-title-6" href="#">Produs#6</a>
-								</h4>
-								<h5>24.99 RON</h5>
-								<p id="card-text-6" class="card-text">Produs 6 - Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-							</div>
-							<div class="card-footer">
-								<button number="6" class="btn" onclick="openModal(this);" data-toggle="modal" data-target="#detailsModal">Detalii</button>
-								<button class="btn">Cumpără</button>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div id="content-row" class="row"></div>
 			</div>
 		</main>
 		<footer class="py-1">
@@ -215,5 +118,6 @@
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.2/qs.js"></script>
 		<script src="assets/js/login.js"></script>
+		<script src="assets/js/productsManagement.js"></script>
 	</body>
 </html>

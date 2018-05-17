@@ -84,6 +84,7 @@
     .items-container{
         width:70%;
         padding-top:15px;
+        min-height:60%;
     }
 
     .big{
