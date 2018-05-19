@@ -21,6 +21,12 @@ window.onload = () => {
                     icons[0].classList.add("fa-user");
                     icons[0].classList.remove("fa-user-times");
                 }
+
+                if(localStorage.getItem("isAdmin") === '1') {
+                    let adminPanel = document.getElementsByClassName("admin-panel");
+                    adminPanel[0].style.display = "block";
+                    adminPanel[1].style.display = "block";
+                }
             }
 
         }).catch((err) => {
@@ -37,7 +43,7 @@ window.onload = () => {
         getCategory();
     }  else if (window.location.href.includes("brand.html")){
         getBrand();
-    }  else if (window.location.href.includes("contact.html")){
+    }  else if (window.location.href.includes("contact.html") || window.location.href.includes("admin.php")){
     }
     else{
         getProducts();
@@ -61,7 +67,8 @@ let loginForm = () => {
 
                 localStorage.setItem('logged', 1);
                 localStorage.setItem('email', email);
-                console.log(response);
+                localStorage.setItem('isAdmin',response.data.isAdmin);
+                console.log(response.data);
                 location.reload();
             } else if(response.status === 202) {
                 //use toastr
@@ -115,6 +122,7 @@ let logoutForm = () => {
 
     localStorage.removeItem("logged");
     localStorage.removeItem("email");
+    localStorage.removeItem("isAdmin");
 
     axios.post(url + "/logout.php")
         .then((result) => {

@@ -6,7 +6,7 @@ if(isset($_SESSION['email'])){
     header("HTTP/1.1 200 OK");
     return;
 } else {
-    header("HTTP/1.1 404 Not Found");
+    header("HTTP/1.1 203 Non-Authoritative Information");
     return;
 }
 

@@ -1,6 +1,6 @@
 <?php
 
-    require_once("dbconfig.php");
+    require_once("config.php");
 
     try {
         $con = new pdo('mysql:host=' . HOST . ';dbname=' . DATABASE .

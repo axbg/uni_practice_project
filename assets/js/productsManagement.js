@@ -41,8 +41,6 @@ let addToCart = (element) =>{
     let productId = element.getAttribute("productId");
     let productStock = document.getElementById("stoc-"+productId);
 
-    console.log(productStock);
-
     let params = new URLSearchParams();
     params.append('productId',productId);
 
@@ -50,7 +48,6 @@ let addToCart = (element) =>{
         .then((result) => {
             //toastr here
             productStock.innerText = Number(productStock.innerText) - 1;
-            console.log("product added to cart");
         }).catch((err) => {
             //toastr here
     })
@@ -107,12 +104,15 @@ let getIndividualProduct = () => {
 
     axios.get(url + "/api/getProduct.php?productId="+productId)
         .then((result)=> {
+
             productContainer.innerHTML = "<div id='product-info' class='col-sm-5 card' style='padding-top:5%;display:inline-block;'>" +
-                "<p>Denumire: " + result.data['name'] + "</p>"+
-                "<p>Descriere: " + result.data['description'] + "</p><p>Pret: "+ result.data['price']+"</p>"+
-                "<p>Stoc: <span id='stoc-"+ result.data['productId'] + "'>"+ result.data['stock'] +"</span></p>" +
-                "<button productId='"+ result.data['productId'] +"' onclick='addToCart(this)'>Cumpără</button></div>" +
-                "<img class='col-sm-7 card' width=250 height=250 src='"+ result.data['image'] +"'>";
+                "<p>Denumire: " + result.data['product']['name'] + "</p>"+
+                "<p>Descriere: " + result.data['product']['description'] + "</p>" +
+                "<p>Brand: "+ result.data['brand'] +"</p>"+
+                "<p>Pret: "+ result.data['product']['price']+"</p>" +
+                "<p>Stoc: <span id='stoc-"+ result.data['product']['productId'] + "'>"+ result.data['product']['stock'] +"</span></p>" +
+                "<button productId='"+ result.data['product']['productId'] +"' onclick='addToCart(this)'>Cumpără</button></div>" +
+                "<img class='col-sm-7 card' width=250 height=280 src='"+ result.data['product']['image'] +"'>";
         })
         .catch((err) => {
             console.log(err);
@@ -198,6 +198,7 @@ let getBrands = () => {
 
     axios.get(url+"/api/getBrands.php")
         .then((result) => {
+            console.log(result.data);
             for(let i = 0; i < result.data.length; i++){
 
                 let brand = '<div class="col-lg-4 col-md-6 mb-4"> ' +

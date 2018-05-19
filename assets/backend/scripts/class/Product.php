@@ -28,6 +28,21 @@ class Product implements JsonSerializable
         $this->brandId = $brandId;
     }
 
+    public function save(PDO $db){
+
+        $saveProduct = $db->prepare("INSERT INTO products(name,description,stock,price,image,brandId,categoryId)
+                          values(:name,:description,:stock,:price,:image,:brandId,:categoryId)");
+        $saveProduct->bindParam(":name",$this->name);
+        $saveProduct->bindParam(":description",$this->description);
+        $saveProduct->bindParam(":stock",$this->stock);
+        $saveProduct->bindParam(":price",$this->price);
+        $saveProduct->bindParam(":image",$this->image);
+        $saveProduct->bindParam(":brandId",$this->brandId);
+        $saveProduct->bindParam(":categoryId",$this->categoryId);
+
+        $saveProduct->execute();
+    }
+
     /**
      * @return mixed
      */

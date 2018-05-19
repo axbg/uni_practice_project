@@ -26,13 +26,12 @@ if(!isset($_SESSION['email'])){
                 $_SESSION['isAdmin'] = $currentUser->getisAdmin();
 
                 header("HTTP/1.1 200 OK");
-                $error['message'] = $currentUser->getToken();
+                $error['isAdmin'] = $currentUser->getisAdmin();
                 echo JSON_ENCODE($error);
                 return;
 
             } else {
                 header("HTTP/1.1 404 Not Found");
-                $error['message'] = $currentUser->getUserId();
                 echo JSON_ENCODE($error);
                 return;
             }
