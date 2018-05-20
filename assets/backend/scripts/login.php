@@ -32,7 +32,6 @@ if(!isset($_SESSION['email'])){
 
             } else {
                 header("HTTP/1.1 404 Not Found");
-                echo JSON_ENCODE($error);
                 return;
             }
 

@@ -44,13 +44,24 @@ class Cart
 
     public function delete(PDO $db, $productId){
 
-        $deleteItem = $db->prepare("DELETE FROM cart WHERE productId=:productId LIMIT 1");
+        $deleteItem = $db->prepare("DELETE FROM cart WHERE productId=:productId AND userId=:userId LIMIT 1");
         $deleteItem->bindParam(":productId",$productId);
+        $deleteItem->bindParam(":userId",$this->userId);
         $deleteItem->execute();
 
         $replenishStock = $db->prepare("UPDATE products SET stock=stock+1 WHERE productId=:productId");
         $replenishStock->bindParam("productId", $productId);
         $replenishStock->execute();
+    }
+
+
+    public function deleteOne(PDO $db, $productId){
+
+        $deleteItem = $db->prepare("DELETE FROM cart WHERE userId=:userId AND productId=:productId LIMIT 1");
+        $deleteItem->bindParam(":userId",$this->userId);
+        $deleteItem->bindParam("productId",$productId);
+        $deleteItem->execute();
+
     }
 
     public function queryUserCart(PDO $db){
@@ -70,6 +81,30 @@ class Cart
 
             $product = new Product($cartItem['productId'], $cartItem['name'], $cartItem['description'], $cartItem['stock'], $cartItem['price'],
                         $cartItem['image'],$cartItem['categoryId'],$cartItem['brandId']);
+
+            array_push($cartProducts,$product);
+        }
+
+        return $cartProducts;
+
+    }
+
+    public function queryUserCartDuplicates(PDO $db){
+
+        $getUserCart = $db->prepare("SELECT products.productId, products.name, products.description, products.stock, products.price,
+                                      products.image, products.categoryId, products.brandId FROM products JOIN 
+                                      cart ON cart.userId = :userId AND cart.productId = products.productId");
+        $getUserCart->bindParam(":userId",$this->userId);
+        $getUserCart->execute();
+
+        $result = $getUserCart->fetchAll(PDO::FETCH_ASSOC);
+
+        $cartProducts = array();
+
+        foreach($result as $cartItem){
+
+            $product = new Product($cartItem['productId'], $cartItem['name'], $cartItem['description'], $cartItem['stock'], $cartItem['price'],
+                $cartItem['image'],$cartItem['categoryId'],$cartItem['brandId']);
 
             array_push($cartProducts,$product);
         }

@@ -1,12 +1,7 @@
-- Search after name in a different page
 
-- Implement buy command
-    - confirm()
-    - deletes everything from cart
-    - moves everything to orders
-    - send email with purchase details
-    
-- Total sum in cart
+- send emails at purchase
+
+- confirm commands and send email
 
 - toastr
 

@@ -75,7 +75,6 @@ let profileInterface = () => {
     modalAction.innerText = "Edit";
     modalAction.onclick = profileEditForm;
 
-
     axios.get(url + "/profile.php")
         .then((response) => {
             modalTitle.innerText = "Profile";
@@ -141,28 +140,33 @@ let openCartModal = () => {
 
     modalTitle.innerText = "Your Cart";
     modalBody.innerHTML = "";
-    modalAction.innerText = "Trimire comanda";
+    modalAction.innerText = "Trimite comanda";
+    modalAction.onclick = purchaseCart;
 
-    axios.get(url + "/api/getCart.php")
-        .then((result) => {
+    getCartSum();
 
-            let cart = "";
-            for(let i = 0; i < result.data[0].length; i++){
-                cart += "<div style='min-height:150px;border-bottom:1px solid black;'>" +
-                    "<p style='float:left;cursor:pointer' productId='" + result.data[0][i]['productId'] + "'onclick='deleteFromCart(this)'>X</p>" +
-                    "<span>Produs: " + result.data[0][i]['name'] + "</span>" +
-                    "<span style='float:right;'>Pret: " + result.data[0][i]['price'] + "</span>" +
-                    "<p><img style='' src='"+ result.data[0][i]['image'] + "' width=100 height=100;'></p>" +
-                    "<span>Cantitate: </span>" +
-                    "<span id='quantity-"+ result.data[0][i]['productId'] +"'>" + result.data[1][i] + "</span></div>"
-            }
+    setTimeout(function(){
+        axios.get(url + "/api/getCart.php")
+            .then((result) => {
 
-            modalBody.innerHTML = cart;
+                let cart = "";
+                for(let i = 0; i < result.data[0].length; i++){
+                    cart += "<div style='min-height:150px;border-bottom:1px solid black;'>" +
+                        "<p style='float:left;cursor:pointer' productId='" + result.data[0][i]['productId'] + "'onclick='deleteFromCart(this)'>X</p>" +
+                        "<span>Produs: " + result.data[0][i]['name'] + "</span>" +
+                        "<span style='float:right;'>Pret: " + result.data[0][i]['price'] + "</span>" +
+                        "<p><img style='' src='"+ result.data[0][i]['image'] + "' width=100 height=100;'></p>" +
+                        "<span>Cantitate: </span>" +
+                        "<span id='quantity-"+ result.data[0][i]['productId'] +"'>" + result.data[1][i] + "</span></div>"
+                }
 
-        }).catch((err) => {
-        //toastr
-        console.log("error happened");
-    });
+                modalBody.innerHTML += cart;
+
+            }).catch((err) => {
+            //toastr
+            console.log("error happened");
+        });
+    }, 100);
 
 };
 

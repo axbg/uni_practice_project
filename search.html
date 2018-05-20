@@ -19,7 +19,7 @@
 		<header class="container-fluid">
 			<div class="row">
 				<div class="col">
-					<a href="#" target="_self">
+					<a href="index.html" target="_self">
 						<img src="assets/img/logoshop.png" class="img-fluid" />
 					</a>
 				</div>
@@ -29,7 +29,6 @@
 			<div class="navbar-toggler dropdown only-small">
 				<a class="fa fa-sort-down arrow"></a>
 				<div class="dropdown-content">
-					<a class="admin-panel" href="./admin.php" style="display:none">Admin</a>
 					<a href="./categories.html">Categorii</a>
 					<a href="./brands.html">Brands</a>
 					<a href="./contact.html">Contact</a>
@@ -40,7 +39,6 @@
 					Meniu
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					<a class="dropdown-item admin-panel" href="./admin.php" style="display:none">Admin</a>
 					<a class="dropdown-item" href="./categories.html">Categories</a>
 					<a class="dropdown-item" href="./brands.html">Brands</a>
 					<a class="dropdown-item" href="./contact.html">Contact</a>
@@ -60,8 +58,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="toggler">
 				<div class="form-inline mt-0 mt-lg-0 my-2 my-lg-0 ml-auto mr-auto">
-					<input class="form-control mr-sm-2" type="search" placeholder="Produs...">
-					<a href="./search.html"><button class="btn my-sm-0 btn-secondary">Caută</button></a>
+					<input id="productName" class="form-control mr-sm-2" type="search" placeholder="Categorie...">
+					<button class="btn my-sm-0 btn-secondary" onclick="searchURL();">Caută</button>
 				</div>
 			</div>
 			<a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
@@ -74,7 +72,7 @@
 		</nav>
 		<main>
 			<div class="container items-container">
-				<div id="content-row" class="row"></div>
+				<div id="search-container" class="row"></div>
 			</div>
 		</main>
 		<footer class="py-1">

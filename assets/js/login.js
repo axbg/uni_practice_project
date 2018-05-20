@@ -43,7 +43,9 @@ window.onload = () => {
         getCategory();
     }  else if (window.location.href.includes("brand.html")){
         getBrand();
-    }  else if (window.location.href.includes("contact.html") || window.location.href.includes("admin.php")){
+    }  else if(window.location.href.includes("search.html")){
+        searchProduct();
+    } else if (window.location.href.includes("contact.html") || window.location.href.includes("admin.php")){
     }
     else{
         getProducts();
@@ -68,7 +70,6 @@ let loginForm = () => {
                 localStorage.setItem('logged', 1);
                 localStorage.setItem('email', email);
                 localStorage.setItem('isAdmin',response.data.isAdmin);
-                console.log(response.data);
                 location.reload();
             } else if(response.status === 202) {
                 //use toastr

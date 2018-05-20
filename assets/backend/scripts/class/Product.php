@@ -46,6 +46,11 @@ class Product implements JsonSerializable
     /**
      * @return mixed
      */
+
+    public function getProductId(){
+        return $this->productId;
+    }
+
     public function getName()
     {
         return $this->name;
@@ -97,6 +102,29 @@ class Product implements JsonSerializable
     public function getBrandId()
     {
         return $this->brandId;
+    }
+
+    public static function searchProduct(PDO $db, $name){
+
+        $searchProduct = $db->prepare("SELECT * from products where UPPER(name) LIKE :name");
+
+        $name = "%".$name."%";
+
+        $searchProduct->bindParam(":name",$name);
+        $searchProduct->execute();
+
+        $results = $searchProduct->fetchAll(PDO::FETCH_ASSOC);
+
+        $productsArray = array();
+
+        foreach($results as $product){
+            $newProduct = new Product($product['productId'], $product['name'],$product['description'],$product['stock'],$product['price'],
+                $product['image'], $product['categoryId'], $product['brandId']);
+
+            array_push($productsArray,$newProduct);
+        }
+
+        return $productsArray;
     }
 
     public static function getProduct(PDO $db, $productId){
