@@ -13,6 +13,7 @@ let fixedNav = () => {
     }
 };
 
+
 let openModal = (element) => {
 
     let number = element.getAttribute("number");
@@ -31,11 +32,20 @@ let openModal = (element) => {
 
 };
 
+
 let openLoginModal = () => {
 
     let modalTitle = document.getElementById("modalTitle");
     let modalBody = document.getElementById("modalBody");
     let modalAction = document.getElementById("modalAction");
+
+    document.removeEventListener('keyup', () => {});
+
+    document.addEventListener('keyup', function(e){
+        if(e.keyCode === 13){
+            loginForm();
+        }
+    });
 
     modalAction.innerText = "Sign Up";
     modalAction.onclick = signUpPanel;
@@ -46,6 +56,7 @@ let openLoginModal = () => {
         "<p><input type='submit' onclick='loginForm()'></p></div>";
 
 };
+
 
 let signUpPanel = () => {
 
@@ -86,10 +97,11 @@ let profileInterface = () => {
                 '<p>Address: ' +response.data.address + '</p></div>';
 
         }).catch((err) => {
-        //toastr here
-        console.log(err.message);
+        toastr.remove();
+        toastr.error("Something unexpected happened! Please try again!");
     })
 };
+
 
 let profileEditForm = () => {
 
@@ -97,19 +109,20 @@ let profileEditForm = () => {
 
     axios.get(url + "/profile.php")
         .then((response) => {
-            profileContainer.innerHTML = '<input id="firstName" type="text" value="'+ response.data.firstName +'">';
-            profileContainer.innerHTML += '<input id="lastName" type="text" value="'+ response.data.lastName +'">';
-            profileContainer.innerHTML += '<input id="email" type="text" value="'+ response.data.email +'">';
-            profileContainer.innerHTML += '<input id="phone" type="text" value="'+ response.data.phone +'">';
-            profileContainer.innerHTML += '<input id="address" type="text" value="'+ response.data.address +'">';
+            profileContainer.innerHTML = '<p><input id="firstName" type="text" value="'+ response.data.firstName +'"></p>';
+            profileContainer.innerHTML += '<p><input id="lastName" type="text" value="'+ response.data.lastName +'"></p>';
+            profileContainer.innerHTML += '<p><input id="email" type="text" value="'+ response.data.email +'"></p>';
+            profileContainer.innerHTML += '<p><input id="phone" type="text" value="'+ response.data.phone +'"></p>';
+            profileContainer.innerHTML += '<p><input id="address" type="text" value="'+ response.data.address +'"></p>';
 
             document.getElementById("modalAction").innerText = "Save";
             document.getElementById("modalAction").onclick = editProfile;
         }).catch((err) => {
-        //toastr here
-        console.log(err.message);
+        toastr.remove();
+        toastr.error("Something unexpected happened! Please try again!");
     })
 };
+
 
 let editProfile = () => {
 
@@ -124,13 +137,15 @@ let editProfile = () => {
 
     axios.post(url + "/api/editProfile.php", params)
         .then((result) => {
-            //insert toastr here
+            toastr.success("Profilul tau a fost actualizat cu succes!");
             profileInterface();
         })
         .catch((err) =>{
-            //insert toastr here
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
         });
 };
+
 
 let openCartModal = () => {
 
@@ -163,19 +178,9 @@ let openCartModal = () => {
                 modalBody.innerHTML += cart;
 
             }).catch((err) => {
-            //toastr
-            console.log("error happened");
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
         });
     }, 100);
-
 };
 
-let openLogoutModal = () => {
-
-    let modalTitle = document.getElementById("modalTitle");
-    let modalBody = document.getElementById("modalBody");
-
-    modalTitle.innerText = "Logout";
-    modalBody.innerHTML = "profile";
-
-};

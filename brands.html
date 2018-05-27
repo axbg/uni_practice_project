@@ -7,6 +7,7 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="assets/css/design.css">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
 
 		<!--OG Tags -->
 		<meta property="og:type" content="website" />
@@ -29,7 +30,9 @@
 			<div class="navbar-toggler dropdown only-small">
 				<a class="fa fa-sort-down arrow"></a>
 				<div class="dropdown-content">
+					<a class="admin-panel" href="./admin.php" style="display:none">Admin</a>
 					<a href="./categories.html">Categorii</a>
+					<a href="./brands.html">Brands</a>
 					<a href="./contact.html">Contact</a>
 				</div>
 			</div>
@@ -38,12 +41,14 @@
 					Meniu
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+					<a class="dropdown-item admin-panel" href="./admin.php" style="display:none">Admin</a>
 					<a class="dropdown-item" href="./categories.html">Categories</a>
+					<a class="dropdown-item" href="./brands.html">Brands</a>
 					<a class="dropdown-item" href="./contact.html">Contact</a>
 				</div>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler" aria-expanded="false" aria-label="Navigation">
-				<span class="fa fa-search"></span>	
+				<span class="fa fa-search"></span>
 			</button>
 			<button class="navbar-toggler" type="button">
 				<a class="fa fa-shopping-cart" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
@@ -55,10 +60,10 @@
 				</div>
 			</div>
 			<div class="collapse navbar-collapse" id="toggler">
-				<form class="form-inline mt-0 mt-lg-0 my-2 my-lg-0 ml-auto mr-auto">
-					<input class="form-control mr-sm-2" type="search" placeholder="Categorie...">
-					<button class="btn my-sm-0 btn-secondary" type="submit">Caută</button>
-				</form>
+				<div class="form-inline mt-0 mt-lg-0 my-2 my-lg-0 ml-auto mr-auto">
+					<input id="productName" class="form-control mr-sm-2" type="search" placeholder="Categorie...">
+					<button class="btn my-sm-0 btn-secondary" onclick="searchURL();">Caută</button>
+				</div>
 			</div>
 			<a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
 			<div class="dropdown">
@@ -116,7 +121,7 @@
 		<script src="assets/js/jquery-3.3.1.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.5.2/qs.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 		<script src="assets/js/login.js"></script>
 		<script src="assets/js/productsManagement.js"></script>
 	</body>

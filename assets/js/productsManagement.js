@@ -37,6 +37,7 @@ let getProducts = () => {
 
 };
 
+
 let addToCart = (element) =>{
 
     let productId = element.getAttribute("productId");
@@ -47,13 +48,22 @@ let addToCart = (element) =>{
 
     axios.post(url+"/api/addToCart.php",params)
         .then((result) => {
-            //toastr here
+            toastr.remove();
+            toastr.success("Produsul a fost adaugat in cos!");
             productStock.innerText = Number(productStock.innerText) - 1;
         }).catch((err) => {
-            //toastr here
+            if(err.response.status === 403){
+                toastr.remove();
+                toastr.warning("Trebuie sa te loghezi pentru a putea adauga produse in cos!");
+            } else {
+                toastr.remove();
+                toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+            }
+
     })
 
 };
+
 
 let deleteFromCart = (element) => {
 
@@ -73,9 +83,6 @@ let deleteFromCart = (element) => {
 
     axios.post(url+"/api/deleteFromCart.php",params)
         .then((result) => {
-            //toastr here
-
-
             try {
                 productStock.innerText = Number(productStock.innerText) + 1;
             }catch(err){
@@ -84,17 +91,19 @@ let deleteFromCart = (element) => {
 
             cartQuantity.innerText = Number(cartQuantity.innerText) - 1;
 
+            modifyCartSum();
+
             if(Number(cartQuantity.innerText) === 0){
                 openCartModal();
             }
-            console.log("product deleted from cart");
+            toastr.remove();
+            toastr.warning("Produsul a fost eliminat din cos!");
         }).catch((err) => {
-        //toastr here
-    })
-
-    modifyCartSum();
-
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+    });
 };
+
 
 let getIndividualProduct = () => {
 
@@ -114,12 +123,12 @@ let getIndividualProduct = () => {
                 "<p>Pret: "+ result.data['product']['price']+"</p>" +
                 "<p>Stoc: <span id='stoc-"+ result.data['product']['productId'] + "'>"+ result.data['product']['stock'] +"</span></p>" +
                 "<button productId='"+ result.data['product']['productId'] +"' onclick='addToCart(this)'>Cumpără</button></div>" +
-                "<img class='col-sm-7 card' width=250 height=280 src='"+ result.data['product']['image'] +"'>";
+                "<img id='productImg' class='col-sm-7 card' width=500 height=500 src='"+ result.data['product']['image'] +"'>";
         })
         .catch((err) => {
-            console.log(err);
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
         })
-
 };
 
 let getCategories = () => {
@@ -146,9 +155,11 @@ let getCategories = () => {
                 categoryContainer.innerHTML += category;
             }
         }).catch((err) => {
-        console.log(err.message);
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
     });
 };
+
 
 let getCategory = () => {
 
@@ -189,10 +200,11 @@ let getCategory = () => {
 
 
         }).catch((ex) => {
-        console.log(ex);
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
     })
-
 };
+
 
 let getBrands = () => {
 
@@ -220,9 +232,11 @@ let getBrands = () => {
                 brandsContainer.innerHTML += brand;
             }
         }).catch((err) => {
-        console.log(err.message);
-    });
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+        });
 };
+
 
 let getBrand = () => {
 
@@ -262,17 +276,19 @@ let getBrand = () => {
             }
 
         }).catch((ex) => {
-        console.log(ex);
-    })
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+        })
 };
+
 
 let searchURL = () => {
 
     let URL = "./search.html?productName=" + document.getElementById("productName").value;
 
     window.location.href = URL;
-
 };
+
 
 let searchProduct = () => {
 
@@ -284,7 +300,9 @@ let searchProduct = () => {
 
     if(productName == null){
         productsContainer.innerHTML = "<h1 class='col-12'>Nothing Here</h1>";
+        console.log("daa");
     } else {
+        console.log("asd");
         axios.get(url + "/api/searchProduct.php?name=" + productName)
             .then((result) => {
 
@@ -324,6 +342,7 @@ let searchProduct = () => {
     }
 };
 
+
 let purchaseCart = () =>{
 
     let cartContainer = document.getElementById("modalBody");
@@ -334,18 +353,19 @@ let purchaseCart = () =>{
         {
             axios.post(url + "/api/purchase.php")
                 .then((result) => {
-                    //toastr here
-                    console.log("comanda plasata. check u r email");
+                    toastr.remove();
+                    toastr.success("Comanda a fost plasata!");
                     location.reload();
                 }).catch((err) => {
-                    //toastr here
-                console.log(err);
+                    toastr.remove();
+                    toastr.error("A aparut o eroare! Te rugam sa reincerci!");
             })
         }
     } else {
         alert("Your cart is empty");
     }
 };
+
 
 let getCartSum = function(){
 
@@ -362,7 +382,6 @@ let modifyCartSum = function() {
 
     axios.get(url + "/api/getCartSum.php")
         .then((result) => {
-            console.log(result.data['total']);
             document.getElementById("cartSum").innerHTML = 'Total: ' + result.data['total'];
         }).catch((err) => {
         return 0;

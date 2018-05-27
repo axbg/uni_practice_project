@@ -1,7 +1,6 @@
 const url="http://desktop/PlaySolutions%20Shop/assets/backend/scripts";
 
 window.onload = () => {
-
     axios.get(url+"/api/checkCredentials.php")
         .then((result) => {
 
@@ -12,7 +11,7 @@ window.onload = () => {
                     msg[i].innerHTML = "<p>Welcome " + localStorage.getItem("email") + "</p>";
                     msg[i].innerHTML += "<div style='text-align:center'><p><button onclick='profileInterface()'>Profile</button></p>" +
                         "<p><input type='submit' onclick='logoutForm()' value='Logout'></p></div>";
-                    msg[i].onclick = openLogoutModal;
+                    msg[i].onclick = "javascript:void(0);";
                 }
 
                 let icons = document.getElementsByClassName("fa-user-times");
@@ -33,6 +32,7 @@ window.onload = () => {
 
     });
 
+
     if(window.location.href.includes("product.html")) {
         getIndividualProduct();
     } else if(window.location.href.includes("categories.html")){
@@ -51,7 +51,14 @@ window.onload = () => {
         getProducts();
     }
 
+    document.addEventListener('keyup', function(e){
+        if(e.keyCode === 13){
+            searchURL();
+        }
+    });
+
 };
+
 
 let loginForm = () => {
 
@@ -72,14 +79,16 @@ let loginForm = () => {
                 localStorage.setItem('isAdmin',response.data.isAdmin);
                 location.reload();
             } else if(response.status === 202) {
-                //use toastr
-                console.log('You are already logged in');
+                toastr.remove();
+                toastr.warning("Esti deja logat!");
             }
 
         }).catch((ex) => {
-            console.log("error");
+        toastr.remove();
+        toastr.error("A aparut o eroare! Te rugam sa reincerci!");
     });
 };
+
 
 let registerForm = () => {
 
@@ -104,20 +113,22 @@ let registerForm = () => {
 
             if(response.status === 200){
 
-                console.log('You were registered. You can log in now.');
-                //use toastr here
+                toastr.remove();
+                toastr.error("Ai fost inregistrat! Acum te poti loga!");
                 openLoginModal();
 
             } else if(response.status === 202) {
-                //use toastr
-                console.log('Some error happened');
+                toastr.remove();
+                toastr.error("A aparut o eroare! Te rugam sa reincerci!");
             }
 
         }).catch((ex) => {
-        console.log("error");
+        toastr.remove();
+        toastr.error("A aparut o eroare! Te rugam sa reincerci!");
     });
 
 };
+
 
 let logoutForm = () => {
 
@@ -127,7 +138,8 @@ let logoutForm = () => {
 
     axios.post(url + "/logout.php")
         .then((result) => {
-            //use toastr
+            toastr.remove();
+            toastr.success("Ai fost delogat.");
             location.reload();
     });
 };

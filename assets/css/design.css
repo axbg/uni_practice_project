@@ -1,6 +1,4 @@
 
-
-
     /* html tags */
     header{
         background-color: #d9dadb;
@@ -33,6 +31,9 @@
         background-color:lightgrey;
     }
 
+
+    /* IDs */
+
     #admin-container{
         margin: 0 auto;
         max-width:300px;
@@ -45,17 +46,7 @@
         margin-bottom:20px;
     }
 
-    select:active, select:hover {
-        outline: none
-    }
 
-    .admin-panel{
-        color:black !important;
-    }
-
-    .admin-button{
-        padding:15px;
-    }
 
     /* classes */
     .navbar{
@@ -141,6 +132,17 @@
         height:30px;
     }
 
+    select:active, select:hover {
+        outline: none
+    }
+
+    .admin-panel{
+        color:black !important;
+    }
+
+    .admin-button{
+        padding:15px;
+    }
 
 
     /*Dropdown controls */
@@ -204,3 +206,13 @@
             margin-left: 0;
         }
     }
+
+
+    @media only screen and (max-width: 900px){
+
+        #productImg{
+            height: 300px;
+        }
+    }
+
+
