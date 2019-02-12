@@ -1,5 +1,5 @@
 
-window.onscroll = function() {fixedNav()};
+window.onscroll = function () { fixedNav() };
 
 let navbar = document.getElementsByTagName('nav')[0];
 
@@ -39,10 +39,10 @@ let openLoginModal = () => {
     let modalBody = document.getElementById("modalBody");
     let modalAction = document.getElementById("modalAction");
 
-    document.removeEventListener('keyup', () => {});
+    document.removeEventListener('keyup', () => { });
 
-    document.addEventListener('keyup', function(e){
-        if(e.keyCode === 13){
+    document.addEventListener('keyup', function (e) {
+        if (e.keyCode === 13) {
             loginForm();
         }
     });
@@ -94,12 +94,12 @@ let profileInterface = () => {
                 '<p>Last Name: ' + response.data.lastName + '</p>' +
                 '<p>Email: ' + response.data.email + '</p>' +
                 '<p>Phone: ' + response.data.phone + '</p>' +
-                '<p>Address: ' +response.data.address + '</p></div>';
+                '<p>Address: ' + response.data.address + '</p></div>';
 
         }).catch((err) => {
-        toastr.remove();
-        toastr.error("Something unexpected happened! Please try again!");
-    })
+            toastr.remove();
+            toastr.error("Something unexpected happened! Please try again!");
+        })
 };
 
 
@@ -109,18 +109,18 @@ let profileEditForm = () => {
 
     axios.get(url + "/profile.php")
         .then((response) => {
-            profileContainer.innerHTML = '<p><input id="firstName" type="text" value="'+ response.data.firstName +'"></p>';
-            profileContainer.innerHTML += '<p><input id="lastName" type="text" value="'+ response.data.lastName +'"></p>';
-            profileContainer.innerHTML += '<p><input id="email" type="text" value="'+ response.data.email +'"></p>';
-            profileContainer.innerHTML += '<p><input id="phone" type="text" value="'+ response.data.phone +'"></p>';
-            profileContainer.innerHTML += '<p><input id="address" type="text" value="'+ response.data.address +'"></p>';
+            profileContainer.innerHTML = '<p><input id="firstName" type="text" value="' + response.data.firstName + '"></p>';
+            profileContainer.innerHTML += '<p><input id="lastName" type="text" value="' + response.data.lastName + '"></p>';
+            profileContainer.innerHTML += '<p><input id="email" type="text" value="' + response.data.email + '"></p>';
+            profileContainer.innerHTML += '<p><input id="phone" type="text" value="' + response.data.phone + '"></p>';
+            profileContainer.innerHTML += '<p><input id="address" type="text" value="' + response.data.address + '"></p>';
 
             document.getElementById("modalAction").innerText = "Save";
             document.getElementById("modalAction").onclick = editProfile;
         }).catch((err) => {
-        toastr.remove();
-        toastr.error("Something unexpected happened! Please try again!");
-    })
+            toastr.remove();
+            toastr.error("Something unexpected happened! Please try again!");
+        })
 };
 
 
@@ -128,11 +128,11 @@ let editProfile = () => {
 
     let params = new URLSearchParams();
 
-    params.append('firstName',document.getElementById("firstName").value);
-    params.append('lastName',document.getElementById("lastName").value);
-    params.append('email',document.getElementById("email").value);
-    params.append('phone',document.getElementById("phone").value);
-    params.append('address',document.getElementById("address").value);
+    params.append('firstName', document.getElementById("firstName").value);
+    params.append('lastName', document.getElementById("lastName").value);
+    params.append('email', document.getElementById("email").value);
+    params.append('phone', document.getElementById("phone").value);
+    params.append('address', document.getElementById("address").value);
 
 
     axios.post(url + "/api/editProfile.php", params)
@@ -140,7 +140,7 @@ let editProfile = () => {
             toastr.success("Profilul tau a fost actualizat cu succes!");
             profileInterface();
         })
-        .catch((err) =>{
+        .catch((err) => {
             toastr.remove();
             toastr.error("A aparut o eroare! Te rugam sa reincerci!");
         });
@@ -149,38 +149,44 @@ let editProfile = () => {
 
 let openCartModal = () => {
 
-    let modalTitle = document.getElementById("modalTitle");
+    let isLoggedIn = localStorage.getItem("logged");
     let modalBody = document.getElementById("modalBody");
     let modalAction = document.getElementById("modalAction");
 
-    modalTitle.innerText = "Your Cart";
-    modalBody.innerHTML = "";
-    modalAction.innerText = "Trimite comanda";
-    modalAction.onclick = purchaseCart;
+    if (isLoggedIn) {
+        let modalTitle = document.getElementById("modalTitle");
 
-    getCartSum();
+        modalTitle.innerText = "Your Cart";
+        modalBody.innerHTML = "";
+        modalAction.innerText = "Trimite comanda";
+        modalAction.onclick = purchaseCart;
 
-    setTimeout(function(){
+        getCartSum();
+
         axios.get(url + "/api/getCart.php")
             .then((result) => {
 
                 let cart = "";
-                for(let i = 0; i < result.data[0].length; i++){
+                for (let i = 0; i < result.data[0].length; i++) {
                     cart += "<div style='min-height:150px;border-bottom:1px solid black;'>" +
                         "<p style='float:left;cursor:pointer' productId='" + result.data[0][i]['productId'] + "'onclick='deleteFromCart(this)'>X</p>" +
                         "<span>Produs: " + result.data[0][i]['name'] + "</span>" +
                         "<span style='float:right;'>Pret: " + result.data[0][i]['price'] + "</span>" +
-                        "<p><img style='' src='"+ result.data[0][i]['image'] + "' width=100 height=100;'></p>" +
+                        "<p><img style='' src='" + result.data[0][i]['image'] + "' width=100 height=100;'></p>" +
                         "<span>Cantitate: </span>" +
-                        "<span id='quantity-"+ result.data[0][i]['productId'] +"'>" + result.data[1][i] + "</span></div>"
+                        "<span id='quantity-" + result.data[0][i]['productId'] + "'>" + result.data[1][i] + "</span></div>"
                 }
 
                 modalBody.innerHTML += cart;
 
             }).catch((err) => {
-            toastr.remove();
-            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
-        });
-    }, 100);
+                toastr.remove();
+                toastr.error("A apărut o eroare!");
+            });
+    } else {
+        modalBody.innerHTML = "<h4>Trebuie să te loghezi pentru a putea adăuga produse în coș</h4>";
+        modalAction.style.display = "none";
+    }
+
 };
 

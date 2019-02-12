@@ -6,29 +6,29 @@ let confirmPurchases = () => {
     let helper = "";
 
     helper = '<div class="row">' +
-        '<p class="col-4">UserID</p>'+
-        '<p class="col-4">Date</p>'+
+        '<p class="col-4">UserID</p>' +
+        '<p class="col-4">Date</p>' +
         '<p class="col-4">Confirm</p>' +
         '</div>';
 
     axios.get(url + "/api/getUnconfirmedOrders.php")
-        .then((result)=>{
+        .then((result) => {
 
-        for(let i = 0; i < result.data.length; i++){
-            helper += '<div class="row" style="padding:10px;">' +
-                '<p class="col-4">'+ result.data[i].userID +'</p>' +
-                '<p class="col-4">' + result.data[i].date + '</p>' +
-                '<p class="col-4" onclick"confirmOrder()">' +
-                '<button style="width:40%;" date="'+ result.data[i].date +'" user="'+ result.data[i].userID +'" onclick="confirmOrder(this)">X</button></p>' +
-                '</div>';
-        }
+            for (let i = 0; i < result.data.length; i++) {
+                helper += '<div class="row" style="padding:10px;">' +
+                    '<p class="col-4">' + result.data[i].userID + '</p>' +
+                    '<p class="col-4">' + result.data[i].date + '</p>' +
+                    '<p class="col-4" onclick"confirmOrder()">' +
+                    '<button style="width:40%;" date="' + result.data[i].date + '" user="' + result.data[i].userID + '" onclick="confirmOrder(this)">X</button></p>' +
+                    '</div>';
+            }
 
-        helper += "<a href='./admin.php'><button>Close</button></a>";
-        container.innerHTML = helper;
+            helper += "<a href='./admin.php'><button>Close</button></a>";
+            container.innerHTML = helper;
 
         }).catch((err) => {
 
-    });
+        });
 
 };
 
@@ -36,7 +36,7 @@ let confirmPurchases = () => {
 let confirmOrder = (element) => {
 
     let params = new URLSearchParams();
-    params.append('user',element.getAttribute("user"));
+    params.append('user', element.getAttribute("user"));
     params.append('date', element.getAttribute("date"));
 
     axios.post(url + "/api/confirmOrder.php", params)
@@ -45,9 +45,9 @@ let confirmOrder = (element) => {
             toastr.remove();
             toastr.success("Comanda ta a fost inregistrata!");
         }).catch((err) => {
-        toastr.remove();
-        toastr.error("A aparut o eroare! Te rugam sa reincerci!");
-    })
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+        })
 
 };
 
@@ -70,14 +70,14 @@ let addProduct = () => {
                 "<input type='file' id='image'>" +
                 "<p><span>Categorie </span><select id='categoryName'>";
 
-            for(let i = 0; i < result.data['categories'].length; i++){
+            for (let i = 0; i < result.data['categories'].length; i++) {
                 helper += "<option>" + result.data['categories'][i].name + "</option>";
             }
 
             helper += "</select></p>";
             helper += "<p><span>Brand </span><select id='brandName'>";
 
-            for(let i = 0; i < result.data['brands'].length; i++){
+            for (let i = 0; i < result.data['brands'].length; i++) {
                 helper += "<option>" + result.data['brands'][i].name + "</option>";
             }
 
@@ -87,11 +87,11 @@ let addProduct = () => {
 
             container.innerHTML = helper;
 
-        }).catch((err)=>{
+        }).catch((err) => {
             toastr.remove();
             toastr.error("A aparut o eroare! Te rugam sa reincerci!");
             console.log(err);
-    });
+        });
 
 };
 
@@ -150,23 +150,23 @@ let saveProduct = () => {
     form.append("price", price.value);
     form.append("categoryName", categoryName.value);
     form.append("brandName", brandName.value);
-    form.append("image",image.files[0]);
+    form.append("image", image.files[0]);
 
     axios.post(url + "/api/addProduct.php", form)
         .then((result) => {
             toastr.remove();
             toastr.success("Produsul a fost adaugat");
             name.value = "";
-            description.value="";
+            description.value = "";
             image.value = "";
             brandName.value = "";
             categoryName.value = "";
             stock.value = "";
             price.value = "";
         }).catch((err) => {
-        toastr.remove();
-        toastr.error("A aparut o eroare! Te rugam sa reincerci!");
-    })
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+        })
 
 };
 
@@ -180,8 +180,8 @@ let saveBrand = () => {
     let form = new FormData();
 
     form.append("name", name.value);
-    form.append("originCountry",originCountry.value);
-    form.append("image",image.files[0]);
+    form.append("originCountry", originCountry.value);
+    form.append("image", image.files[0]);
 
     axios.post(url + "/api/addBrand.php", form)
         .then((result) => {
@@ -191,9 +191,9 @@ let saveBrand = () => {
             originCountry.value = "";
             image.value = "";
         }).catch((err) => {
-        toastr.remove();
-        toastr.error("A aparut o eroare! Te rugam sa reincerci!");
-    })
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+        })
 
 };
 
@@ -207,8 +207,8 @@ let saveCategory = () => {
     let form = new FormData();
 
     form.append("name", name.value);
-    form.append("description",description.value);
-    form.append("image",image.files[0]);
+    form.append("description", description.value);
+    form.append("image", image.files[0]);
 
     axios.post(url + "/api/addCategory.php", form)
         .then((result) => {
@@ -219,8 +219,8 @@ let saveCategory = () => {
             image.value = "";
 
         }).catch((err) => {
-        toastr.remove();
-        toastr.error("A aparut o eroare! Te rugam sa reincerci!");
-    })
+            toastr.remove();
+            toastr.error("A aparut o eroare! Te rugam sa reincerci!");
+        })
 
 };

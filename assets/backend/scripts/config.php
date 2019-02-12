@@ -3,7 +3,7 @@
     define("HOST",'localhost');
     define("USER",'root');
     define("PASSWORD","");
-    define("DATABASE","practica");
+    define("DATABASE","plsolutions_shop");
 
-    define("IMAGES", $_SERVER['DOCUMENT_ROOT'] . "/PlaySolutions Shop/assets/img/");
+    define("IMAGES", $_SERVER['DOCUMENT_ROOT'] . "/proiect_practica/assets/img/");
 ?>

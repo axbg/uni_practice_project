@@ -12,35 +12,40 @@ class Order implements JsonSerializable
     private $userId;
     private $date;
 
-    public function __construct($userId){
+    public function __construct($userId)
+    {
         $this->userId = $userId;
         $this->date = time();
     }
 
-    public function edit($userId, $date){
+    public function edit($userId, $date)
+    {
         $this->userId = $userId;
         $this->date = $date;
     }
 
-    public function insertOrder(PDO $db, $productId){
+    public function insertOrder(PDO $db, $productId)
+    {
 
-        $insertOrder = $db->prepare("INSERT INTO orders(userId,productId,date,status) 
+        $insertOrder = $db->prepare("INSERT INTO orders(userId,productId,date,status)
                       VALUES(:userId,:productId,:date,0)");
-        $insertOrder->bindParam(":userId",$this->userId);
-        $insertOrder->bindParam("productId",$productId);
+        $insertOrder->bindParam(":userId", $this->userId);
+        $insertOrder->bindParam("productId", $productId);
         $insertOrder->bindParam("date", $this->date);
         $insertOrder->execute();
     }
 
-    public function confirmOrder(PDO $db){
+    public function confirmOrder(PDO $db)
+    {
 
         $confirmOrder = $db->prepare("UPDATE orders SET status=1 WHERE date=:date");
-        $confirmOrder->bindParam(":date",$this->date);
+        $confirmOrder->bindParam(":date", $this->date);
         $confirmOrder->execute();
 
     }
 
-    public static function getUnconfirmedOrders(PDO $db){
+    public static function getUnconfirmedOrders(PDO $db)
+    {
 
         $getOrders = $db->prepare("SELECT DISTINCT date, userID FROM orders WHERE status=0");
         $getOrders->execute();
@@ -50,13 +55,12 @@ class Order implements JsonSerializable
         return $orders;
     }
 
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         return [
             'date' => $this->date,
             'userID' => $this->userID,
         ];
     }
-
-
 
 }

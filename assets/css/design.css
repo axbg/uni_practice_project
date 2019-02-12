@@ -1,218 +1,228 @@
+/* html tags */
+header {
+  background-color: #d9dadb;
+  text-align: center;
+  transition: 0.5s ease;
+  width: 100%;
+  height: 100px;
+}
 
-    /* html tags */
-    header{
-        background-color: #d9dadb;
-        text-align: center;
-        transition: .5s ease;
-        width:100%;
-        height:100px;
-    }
+header:hover {
+  background-color: lightgrey;
+}
 
-    header:hover{
-        background-color:lightgrey;
-    }
+main {
+  background-image: url("../img/back.png");
+}
 
-    main{
-        background-image: url("../img/back.png");
-    }
+main a {
+  color: red;
+}
 
-    main a{
-        color:red;
-    }
+footer {
+  background-color: #d9dadb;
+  text-align: center;
+  transition: 0.5s ease;
+  border-top: 1px solid black;
+}
 
-    footer{
-        background-color: #d9dadb;
-        text-align: center;
-        transition: .5s ease;
-         border-top: 1px solid black;
-    }
+footer:hover {
+  background-color: lightgrey;
+}
 
-    footer:hover{
-        background-color:lightgrey;
-    }
+::-webkit-scrollbar {
+  width: 10px;
+}
 
+::-webkit-scrollbar-track {
+  background: #fbfbfb;
+}
 
-    /* IDs */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
 
-    #admin-container{
-        margin: 0 auto;
-        max-width:300px;
-        min-height:450px;
-        text-align:center;
-        padding:10px;
-    }
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
-    #admin-container input{
-        margin-bottom:20px;
-    }
+/* IDs */
 
+#admin-container {
+  margin: 0 auto;
+  max-width: 300px;
+  min-height: 450px;
+  text-align: center;
+  padding: 10px;
+  background-color: whitesmoke;
+  border-left: 1px black solid;
+  border-right: 1px black solid;
+}
 
+#admin-container input {
+  margin-bottom: 20px;
+}
 
-    /* classes */
-    .navbar{
-        background-color:rgba(0,0,0,.03); !important;
-        width:100%;
-        z-index:2;
-    }
+/* classes */
+.navbar {
+  width: 100%;
+  z-index: 2;
+}
 
-    .sticky {
-        position: fixed;
-        top: 0;
-        width: 100%
-    }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
 
-    .sticky + main{
-        padding-top: 60px;
-    }
+.sticky + main {
+  padding-top: 60px;
+}
 
-    .form-control{
-        width: 75%
-    }
+.form-control {
+  width: 75%;
+}
 
-    .arrow{
-        margin-left:7%;
-        margin-bottom:10px;
-        cursor: pointer;
-    }
+.arrow {
+  margin-left: 7%;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
 
-    .shop{
-        margin-right:2%;
-        background-color:#dddddd;
-        height:38px;
-    }
+.shop {
+  margin-right: 2%;
+  background-color: #dddddd;
+  height: 38px;
+}
 
-    .menu-buttons{
-        padding: .25rem .75rem;
-        font-size: 1.25rem;
-        line-height: 1;
-        background-color: transparent;
-        border: 1px solid transparent;
-        border-radius: .25rem;
-    }
+.menu-buttons {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
 
-    .row{
-        text-align:center;
-    }
+.row {
+  text-align: center;
+}
 
-    .items-container{
-        width:70%;
-        padding-top:15px;
-        min-height:60%;
-    }
+.items-container {
+  width: 70%;
+  padding-top: 15px;
+  min-height: 60%;
+}
 
-    .big{
-        width:100% !important;
-    }
+.big {
+  width: 100% !important;
+}
 
-    .img-fluid{
-        height:100%;
-    }
+.img-fluid {
+  height: 100%;
+}
 
-    .logo-footer{
-        max-height:90px;
-    }
+.logo-footer {
+  max-height: 90px;
+}
 
-    .contact{
-        text-decoration: none;
-        color: grey;
-        transition: .5s ease;
-    }
+.contact {
+  text-decoration: none;
+  color: grey;
+  transition: 0.5s ease;
+}
 
-    .contact:hover{
-        text-decoration: none;
-        color: black;
-    }
+.contact:hover {
+  text-decoration: none;
+  color: black;
+}
 
-    .bordered{
-        border-top: 1px solid black;
-        border-bottom: 1px solid black;
-    }
+.bordered {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
 
-    .only-small{
-        height:30px;
-    }
+.only-small {
+  height: 30px;
+}
 
-    select:active, select:hover {
-        outline: none
-    }
+select:active,
+select:hover {
+  outline: none;
+}
 
-    .admin-panel{
-        color:black !important;
-    }
+.admin-panel {
+  color: black !important;
+}
 
-    .admin-button{
-        padding:15px;
-    }
+.admin-button {
+  padding: 15px;
+}
 
+/*Dropdown controls */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
 
-    /*Dropdown controls */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-        cursor: pointer;
-    }
+.right {
+  left: auto;
+  right: 0;
+}
 
-    .right{
-        left:auto;
-        right:0;
-    }
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  font-size: 15px;
+}
 
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        font-size:15px;
-    }
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
 
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-    }
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
 
-    .dropdown-content a:hover {
-        background-color: #f1f1f1
-    }
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+/* Dropdown controls end */
 
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-    /* Dropdown controls end */
+.btn-secondary {
+  background-color: lightgrey;
+  color: black;
+}
 
-    .btn-secondary{
-        background-color: lightgrey;
-        color:black;
-    }
+.dropdown-menu {
+  min-width: 10px;
+}
 
-    .dropdown-menu{
-        min-width:10px;
-    }
+.modal-body {
+  text-align: center;
+}
 
-    .modal-body{
-        text-align:center;
-    }
+/* media queries */
+@media screen and (max-width: 575px) {
+  .only-big {
+    display: none;
+  }
 
-    /* media queries */
-    @media screen and (max-width: 575px) {
-        .only-big{
-            display:none;
-        }
+  .home {
+    margin-left: 0;
+  }
+}
 
-        .home{
-            margin-left: 0;
-        }
-    }
-
-
-    @media only screen and (max-width: 900px){
-
-        #productImg{
-            height: 300px;
-        }
-    }
-
-
+@media only screen and (max-width: 900px) {
+  #productImg {
+    height: 300px;
+  }
+}

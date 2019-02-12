@@ -1,128 +1,141 @@
 <html>
-    <head>
-        <title>PlaySolutions - Shop Design</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" href="assets/img/favicon.ico">
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/design.css">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
 
-        <!--OG Tags -->
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Magazin online - Practica PlaySolutions" />
-        <meta property="og:description" content="Magazin online de produse hardware" />
-        <meta property="og:site_name" content="Online Shop" />
-        <meta property="og:image" content="assets/img/logoshop.png" />
-    </head>
-    <body>
-        <header class="container-fluid">
+<head>
+    <title>PlaySolutions - Shop Design</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/design.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" />
+
+    <!--OG Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Magazin online - Practica PlaySolutions" />
+    <meta property="og:description" content="Magazin online de produse hardware" />
+    <meta property="og:site_name" content="Online Shop" />
+    <meta property="og:image" content="assets/img/logoshop.png" />
+</head>
+
+<body>
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <a href="index.html" target="_self">
+                    <img src="assets/img/logoshop.png" class="img-fluid" />
+                </a>
+            </div>
+        </div>
+    </header>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light bordered">
+        <div class="navbar-toggler dropdown only-small">
+            <a class="fa fa-sort-down arrow"></a>
+            <div class="dropdown-content">
+                <a class="admin-panel" href="./admin.php" style="display:none">Admin</a>
+                <a href="./categories.html">Categorii</a>
+                <a href="./brands.html">Brands</a>
+                <a href="./contact.html">Contact</a>
+            </div>
+        </div>
+        <div class="dropdown only-big">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Meniu
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item admin-panel" href="./admin.php" style="display:none">Admin</a>
+                <a class="dropdown-item" href="./categories.html">Categories</a>
+                <a class="dropdown-item" href="./brands.html">Brands</a>
+                <a class="dropdown-item" href="./contact.html">Contact</a>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler" aria-expanded="false"
+            aria-label="Navigation">
+            <span class="fa fa-search"></span>
+        </button>
+        <button class="navbar-toggler" type="button">
+            <a class="fa fa-shopping-cart" onclick="openCartModal()" data-toggle="modal"
+                data-target="#detailsModal"></a>
+        </button>
+        <div class="navbar-toggler dropdown only-small">
+            <a class="fa fa-user-times arrow"></a>
+            <div class="dropdown-content right">
+                <a href="#" class="user-msg" onclick="openLoginModal();" data-toggle="modal"
+                    data-target="#detailsModal">Log In</a>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="toggler">
+            <div class="form-inline mt-0 mt-lg-0 my-2 my-lg-0 ml-auto mr-auto">
+                <input id="productName" class="form-control mr-sm-2" type="search" placeholder="Categorie...">
+                <button class="btn my-sm-0 btn-secondary" onclick="searchURL();">Caută</button>
+            </div>
+        </div>
+        <a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons" onclick="openCartModal()"
+            data-toggle="modal" data-target="#detailsModal"></a>
+        <div class="dropdown">
+            <div class="btn fa fa-2x fa-user-times only-big menu-buttons" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"></div>
+            <div class="dropdown-menu right" style="right:0;">
+                <a id="user-message" class="dropdown-item user-msg" href="#" onclick="openLoginModal();"
+                    data-toggle="modal" data-target="#detailsModal">Log In</a>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container items-container">
+            <div id="categories-container" class="row"></div>
+        </div>
+    </main>
+    <footer class="py-1">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col">
-                    <a href="index.html" target="_self">
-                        <img src="assets/img/logoshop.png" class="img-fluid" />
+                <div class="col-12 col-sm-12 col-md-12">
+                    <a href="https://playsolutions.ro" target="_blank">
+                        <img src="assets/img/logo.png" class="img-fluid logo-footer" />
                     </a>
                 </div>
             </div>
-        </header>
-        <nav class="navbar navbar-expand-sm navbar-light bg-light bordered">
-            <div class="navbar-toggler dropdown only-small">
-                <a class="fa fa-sort-down arrow"></a>
-                <div class="dropdown-content">
-                    <a class="admin-panel" href="./admin.php" style="display:none">Admin</a>
-                    <a href="./categories.html">Categorii</a>
-                    <a href="./brands.html">Brands</a>
-                    <a href="./contact.html">Contact</a>
-                </div>
-            </div>
-            <div class="dropdown only-big">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Meniu
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item admin-panel" href="./admin.php" style="display:none">Admin</a>
-                    <a class="dropdown-item" href="./categories.html">Categories</a>
-                    <a class="dropdown-item" href="./brands.html">Brands</a>
-                    <a class="dropdown-item" href="./contact.html">Contact</a>
-                </div>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#toggler" aria-expanded="false" aria-label="Navigation">
-                <span class="fa fa-search"></span>
-            </button>
-            <button class="navbar-toggler" type="button">
-                <a class="fa fa-shopping-cart" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
-            </button>
-            <div class="navbar-toggler dropdown only-small">
-                <a class="fa fa-user-times arrow"></a>
-                <div class="dropdown-content right">
-                    <a href="#" class="user-msg" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Log In</a>
-                </div>
-            </div>
-            <div class="collapse navbar-collapse" id="toggler">
-                <div class="form-inline mt-0 mt-lg-0 my-2 my-lg-0 ml-auto mr-auto">
-                    <input id="productName" class="form-control mr-sm-2" type="search" placeholder="Categorie...">
-                    <button class="btn my-sm-0 btn-secondary" onclick="searchURL();">Caută</button>
-                </div>
-            </div>
-            <a id="cart" class="btn fa fa-2x fa-shopping-cart only-big menu-buttons" onclick="openCartModal()" data-toggle="modal" data-target="#detailsModal"></a>
-            <div class="dropdown">
-                <div class="btn fa fa-2x fa-user-times only-big menu-buttons"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div>
-                <div class="dropdown-menu right" style="right:0;">
-                    <a id="user-message" class="dropdown-item user-msg" href="#" onclick="openLoginModal();" data-toggle="modal" data-target="#detailsModal">Log In</a>
-                </div>
-            </div>
-        </nav>
-        <main>
-            <div class="container items-container">
-                <div id="categories-container" class="row"></div>
-            </div>
-        </main>
-        <footer class="py-1">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12">
-                        <a href="https://playsolutions.ro" target="_blank">
-                            <img src="assets/img/logo.png" class="img-fluid logo-footer" />
-                        </a>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-12 col-sm-12 col-md-4">
-                        <a class="fa fa-2x fa-facebook mr-5 contact" href="https://web.facebook.com/PlaySolutions/?_rdc=1&_rdr" target="_blank"></a>
-                        <a class="fa fa-2x fa-linkedin ml-3 mr-3 contact" href="https://www.linkedin.com/company/2902224/" target="_blank"></a>
-                        <a class="fa fa-2x fa-twitter ml-5 contact" href="https://twitter.com/PlaySolutionsRO" target="_blank"></a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!--Modal Start -->
-        <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">X</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div id="modalBody"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button id="modalClose" type="button" class="btn" data-dismiss="modal">Close</button>
-                        <button id="modalAction" type="button" class="btn">Cumpără</button>
-                    </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-12 col-sm-12 col-md-4">
+                    <a class="fa fa-2x fa-facebook mr-5 contact"
+                        href="https://web.facebook.com/PlaySolutions/?_rdc=1&_rdr" target="_blank"></a>
+                    <a class="fa fa-2x fa-linkedin ml-3 mr-3 contact" href="https://www.linkedin.com/company/2902224/"
+                        target="_blank"></a>
+                    <a class="fa fa-2x fa-twitter ml-5 contact" href="https://twitter.com/PlaySolutionsRO"
+                        target="_blank"></a>
                 </div>
             </div>
         </div>
-        <script src="assets/js/design.js"></script>
-        <script src="assets/js/jquery-3.3.1.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script src="assets/js/login.js"></script>
-        <script src="assets/js/productsManagement.js"></script>
-    </body>
+    </footer>
+    <!--Modal Start -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="modalBody"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="modalClose" type="button" class="btn" data-dismiss="modal">Close</button>
+                    <button id="modalAction" type="button" class="btn">Cumpără</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/design.js"></script>
+    <script src="assets/js/jquery-3.3.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/productsManagement.js"></script>
+</body>
+
 </html>
